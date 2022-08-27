@@ -7,6 +7,7 @@ export enum NodeTypes {
 
 interface Node {
     type: NodeTypes,
+    context?: any[]
 }
 
 export type ChildNode = NumberNode | CallExpressionNode
@@ -14,6 +15,7 @@ export type ChildNode = NumberNode | CallExpressionNode
 export interface RootNode extends Node {
     type: NodeTypes.Program;
     body: ChildNode[];
+    
 }
 export interface NumberNode extends Node {
     type: NodeTypes.NumberLiteral
@@ -22,7 +24,7 @@ export interface NumberNode extends Node {
 export interface CallExpressionNode extends Node {
     type: NodeTypes.CallExpression
     name: string;
-    params: ChildNode[]
+    params: ChildNode[],
 }
  
 function createRootNode(): RootNode {

@@ -1,6 +1,6 @@
-import { RootNode, NodeTypes, ChildNode } from "./parser";
+import { RootNode, NodeTypes, ChildNode, CallExpressionNode } from './parser';
 
-type ParentNode = RootNode | ChildNode | undefined;
+type ParentNode = RootNode | CallExpressionNode | undefined;
 type VisitorMethod = (node: RootNode | ChildNode, parent: ParentNode) => void;
 
 export interface VisitorOption {
@@ -9,8 +9,8 @@ export interface VisitorOption {
 }
 export interface Visitor {
   Program?: VisitorOption;
-  CallExpression: VisitorOption;
-  NumberLiteral: VisitorOption;
+  CallExpression?: VisitorOption;
+  NumberLiteral?: VisitorOption;
 }
 
 export function traverser(ast: RootNode, visitor: Visitor) {
