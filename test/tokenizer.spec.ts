@@ -14,6 +14,5 @@ test("tokenizer", () => {
     { type: "paren", value: ")" },
     { type: "paren", value: ")" },
   ];
-  console.log(tokenizer(code));
   expect(tokenizer(code)).toEqual(tokens);
 });
